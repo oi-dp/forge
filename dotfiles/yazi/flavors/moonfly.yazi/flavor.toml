@@ -1,0 +1,172 @@
+# vim:fileencoding=utf-8
+
+# Moonfly palette reference:
+#   bg         #080808   fg         #bdbdbd
+#   black      #323437   br-black   #949494
+#   red        #ff5d5d   br-red     #ff5189
+#   green      #8cc85f   br-green   #36c692
+#   yellow     #e3c78a   br-yellow  #c6c684
+#   blue       #80a0ff   br-blue    #74b2ff
+#   purple     #cf87e8   br-purple  #ae81ff
+#   cyan       #79dac8   br-cyan    #85dc85
+#   white      #c6c6c6   br-white   #e4e4e4
+#   selection  #b2ceee
+
+[mgr]
+cwd = { fg = "#949494", italic = true }
+
+# Hovered
+hovered         = { bg = "#323437" }
+preview_hovered = { bg = "#323437" }
+
+# Find
+find_keyword  = { fg = "#080808", bg = "#e3c78a", bold = true }
+find_position = { fg = "#79dac8", bg = "#323437", bold = true }
+
+# Marker
+marker_copied   = { fg = "#79dac8", bg = "#79dac8" }
+marker_cut      = { fg = "#ff5d5d", bg = "#ff5d5d" }
+marker_marked   = { fg = "#cf87e8", bg = "#cf87e8" }
+marker_selected = { fg = "#80a0ff", bg = "#80a0ff" }
+
+# Count
+count_copied   = { fg = "#080808", bg = "#36c692" }
+count_cut      = { fg = "#080808", bg = "#ff5d5d" }
+count_selected = { fg = "#080808", bg = "#74b2ff" }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#79dac8" }
+
+[tabs]
+active   = { fg = "#080808", bg = "#80a0ff" }
+inactive = { fg = "#80a0ff", bg = "#323437" }
+
+
+[mode]
+normal_main = { fg = "#080808", bg = "#80a0ff", bold = true }
+normal_alt  = { fg = "#80a0ff", bg = "#323437" }
+
+select_main = { fg = "#080808", bg = "#cf87e8", bold = true }
+select_alt  = { fg = "#cf87e8", bg = "#323437" }
+
+unset_main  = { fg = "#080808", bg = "#ae81ff", bold = true }
+unset_alt   = { fg = "#ae81ff", bg = "#323437" }
+
+
+[status]
+overall         = { fg = "#bdbdbd", bg = "#080808" }
+separator_open  = ""
+separator_close = ""
+
+# Progress
+progress_label  = { fg = "#bdbdbd", bold = true }
+progress_normal = { fg = "#080808", bg = "#323437" }
+progress_error  = { fg = "#ff5d5d", bg = "#323437" }
+
+# Permissions
+perm_type  = { fg = "#80a0ff" }
+perm_read  = { fg = "#e3c78a" }
+perm_write = { fg = "#ff5d5d" }
+perm_exec  = { fg = "#8cc85f" }
+perm_sep   = { fg = "#949494" }
+
+
+[pick]
+border   = { fg = "#79dac8" }
+active   = { fg = "#bdbdbd", bg = "#323437" }
+inactive = { fg = "#bdbdbd" }
+
+
+[input]
+border   = { fg = "#79dac8" }
+title    = { fg = "#79dac8" }
+value    = { fg = "#ae81ff" }
+selected = { bg = "#323437" }
+
+
+[cmp]
+border   = { fg = "#79dac8" }
+active   = { fg = "#bdbdbd", bg = "#323437" }
+inactive = { fg = "#bdbdbd" }
+
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+
+[tasks]
+border  = { fg = "#79dac8" }
+title   = { fg = "#79dac8" }
+hovered = { fg = "#bdbdbd", bg = "#323437" }
+
+
+[which]
+cols            = 3
+mask            = { bg = "#080808" }
+cand            = { fg = "#74b2ff" }
+rest            = { fg = "#80a0ff" }
+desc            = { fg = "#cf87e8" }
+separator       = " ➜ "
+separator_style = { fg = "#949494" }
+
+
+[confirm]
+border     = { fg = "#79dac8" }
+title      = { fg = "#79dac8" }
+content    = {}
+list       = {}
+btn_yes    = { bg = "#323437" }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+
+[spot]
+border = { fg = "#79dac8" }
+title  = { fg = "#79dac8" }
+
+
+[notify]
+title_info  = { fg = "#79dac8" }
+title_warn  = { fg = "#e3c78a" }
+title_error = { fg = "#ff5d5d" }
+
+icon_error = ""
+icon_warn  = ""
+icon_info  = ""
+
+
+[help]
+on      = { fg = "#8cc85f" }
+run     = { fg = "#cf87e8" }
+desc    = { fg = "#74b2ff" }
+hovered = { bg = "#323437" }
+footer  = { fg = "#bdbdbd", bg = "#080808" }
+
+
+[filetype]
+
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#e3c78a" },
+
+	# Media
+	{ mime = "{audio,video}/*", fg = "#cf87e8" },
+
+	# Archives
+	{ mime = "application/*zip", fg = "#ff5d5d" },
+	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#ff5d5d" },
+
+	# Documents
+	{ mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#74b2ff" },
+
+	# Special files
+	{ mime = "inode/symlink", bg = "#ff5189" },
+	{ mime = "application/x-executable", fg = "#8cc85f" },
+
+	# Directories
+	{ mime = "inode/directory", fg = "#80a0ff" },
+
+	# Fallback
+	{ mime = "*", fg = "#bdbdbd" },
+]

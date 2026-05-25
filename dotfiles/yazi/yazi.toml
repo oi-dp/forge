@@ -1,0 +1,20 @@
+[mgr]
+sort_by   = "natural"
+
+[preview]
+image_filter = "triangle"
+image_quality = 90
+
+[opener]
+edit = [
+	{ run = "${EDITOR:-nvim} %s", desc = "$EDITOR", for = "unix", block = true },
+]
+play = [
+	{ run = "xdg-open %s1",    desc = "Play", for = "linux", orphan = true },
+]
+open = [
+	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
+]
+extract = [
+	{ run = "ya pub extract --list %s", desc = "Extract here" },
+]
