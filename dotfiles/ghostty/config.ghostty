@@ -1,0 +1,35 @@
+# fonts config
+font-family = Iosevka NF
+font-size = 11
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
+
+adjust-underline-position = 1
+adjust-underline-thickness = 40%
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-color = cell-foreground
+adjust-cursor-thickness = 150%
+mouse-hide-while-typing
+
+theme = moonfly
+
+window-padding-x = 10
+window-padding-y = 10
+scrollbar = never
+window-decoration = none
+
+# keybinds
+keybind = ctrl+enter=ignore
+keybind = alt+shift+comma=reload_config
+
+confirm-close-surface = false
+
+# notify
+notify-on-command-finish-action = no-bell,notify
+
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 5m

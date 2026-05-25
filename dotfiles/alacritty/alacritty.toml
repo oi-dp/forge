@@ -1,0 +1,40 @@
+## General Configuration
+
+general.import = ["~/.config/alacritty/moonfly.toml"]
+general.live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 10, y = 10 }
+decorations = "None" # or Full
+dynamic_padding = true
+opacity = 0.8
+blur = true
+# dynamic_title = true
+
+[colors]
+transparent_background_colors = true
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+blink_interval = 350
+thickness = 0.25
+
+[font]
+normal = { family = "Iosevka Nerd Font", style = "Regular" }
+bold = { family = "Iosevka Nerd Font", style = "Bold" }
+italic = { family = "Iosevka Nerd Font", style = "Italic" }
+bold_italic = { family = "Iosevka Nerd Font", style = "Bold Italic" }
+size = 11
+
+[terminal.shell]
+program = "/bin/fish"
+
+[scrolling]
+history = 15000
+multiplier = 5
+
+[mouse]
+hide_when_typing = true
