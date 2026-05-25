@@ -1,0 +1,10 @@
+[Unit]
+Description=Nuke Spotify cache
+Wants=spot-ccleaner.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rm -rf %h/.cache/spotify/Data
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Audio Tracker Notifier
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/python /home/oidp/codespace/forge/scripts/audio-tracking.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target
