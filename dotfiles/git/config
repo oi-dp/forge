@@ -1,0 +1,23 @@
+[init]
+	defaultBranch = main
+
+[user]
+	name = oi-dp
+	email = oi.dp@pm.me
+
+[core]
+    editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    file-modified-label = "modified:"
+    hunk-header-style = omit
+    side-by-side = true
+    navigate = true  # use n and N to move between diff sections
+    syntax-theme = fly16
+
+[merge]
+    conflictStyle = zdiff3
