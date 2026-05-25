@@ -1,0 +1,36 @@
+{
+  "custom/sep": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/sep2": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "custom/updater": {
+    "format": "{}",
+    "exec": "~/codespace/forge/scripts/arch_updater.sh",
+    "return-type": "json",
+    "interval": 10800,
+    "signal": 8,
+    "on-click": "notify-send 'Checking updates' 'Manual checking triggered' && ~/codespace/forge/scripts/arch_updater.sh && pkill -SIGRTMIN+8 waybar",
+    "tooltip": true
+  },
+
+  "custom/ticker": {
+    "max-length": 30,
+    "format": "{}",
+    "exec": "~/codespace/pyvirt/.venv/bin/python ~/codespace/forge/scripts/ticker.py",
+    "return-type": "json"
+  },
+  "custom/weather": {
+    "format": "{}",
+    "exec": "~/codespace/pyvirt/.venv/bin/python ~/codespace/forge/scripts/weatherboy.py",
+    "return-type": "json",
+    "interval": 1800
+  }
+}

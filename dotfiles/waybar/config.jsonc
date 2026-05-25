@@ -1,0 +1,38 @@
+// -*- mode: jsonc -*-
+{
+  "include": [
+    "$HOME/.config/waybar/modules.jsonc",
+    "$HOME/.config/waybar/modules-group.jsonc",
+    "$HOME/.config/waybar/modules-custom.jsonc"
+  ],
+  "layer": "top",
+  "position": "top",
+  "height": 29,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+
+  // order of the modules
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "hyprland/window",
+    "custom/sep"
+  ],
+  "modules-center": [],
+
+  "modules-right": [
+    // "custom/ticker",
+    "custom/sep",
+    "custom/weather",
+    "custom/updater",
+    "network",
+    "custom/sep",
+    // "temperature",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "custom/sep",
+    "group/time"
+  ]
+}

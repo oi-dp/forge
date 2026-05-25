@@ -1,0 +1,42 @@
+# Layout
+anchor=top-right
+# margin (top, right, bottom, left)
+margin=20,5,5,0
+width=300
+height=150
+padding=15
+max-history=1
+
+# Typo & Icons
+font=Iosevka Nerd Font Mono Medium 10
+format=<b>%s</b>\n%b
+icons=1
+max-icon-size=48
+markup=1
+actions=1
+
+# Colors
+background-color=#080808cc
+text-color=#eeeeee
+border-color=#80a0ff
+border-size=2
+border-radius=6
+
+# Display Time
+default-timeout=5000
+
+# Urgency Levels
+[urgency=low]
+border-color=#949494
+default-timeout=3000
+
+[urgency=normal]
+border-color=#80a0ff
+default-timeout=5000
+
+[urgency=critical]
+border-color=#ff5454
+background-color=#080808
+text-color=#eeeeee
+default-timeout=0
+

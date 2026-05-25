@@ -1,0 +1,62 @@
+// Modules configuration
+
+{
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+
+  "hyprland/window": {
+    "max-length": 40,
+    "seperate-outputs": false
+  },
+
+  "temperature": {
+    "interval": 10,
+    "hwmon-path": ["/sys/class/hwmon/hwmon1/temp1_input"],
+    "critical-threshold": 80,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C",
+    "tooltip": false
+  },
+
+  "network": {
+    "format": "󱘖  ONLINE",
+    "format-disconnected": "OFFLINE ⚠",
+    "interval": 1500,
+    "tooltip": false
+  },
+
+  "cpu": {
+    "format": "󰍛 {usage}%",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "󰓅 {used:0.1f}GiB",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "scroll-step": 2,
+    "format": "  {volume}%",
+    "format-muted": " Muted",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+
+  "clock": {
+    "format": "{:%H:%M:%S}",
+    "interval": 1,
+    "tooltip": false
+  },
+
+  "clock#2": {
+    "format": "- {:%a, %d %B %Y}",
+    "tooltip": false
+  }
+}

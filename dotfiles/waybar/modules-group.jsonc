@@ -1,0 +1,11 @@
+{
+  "group/time": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "clock",
+      "transition-left-to-right": true
+    },
+    "modules": ["clock", "clock#2"]
+  }
+}
