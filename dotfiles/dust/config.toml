@@ -1,0 +1,10 @@
+reverse = true
+display-full-paths = false
+display-apparent-size = true
+no-colors = false
+no-bars = true
+skip-total = false
+ignore-hidden=false
+output-format = 'si'
+# number-of-lines = 5
+# collapse = ['.git']
