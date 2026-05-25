@@ -1,0 +1,68 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+command_timeout = 5000
+
+palette = "moonfly"
+
+[directory]
+truncation_length = 5
+read_only = " 󰌾"
+
+[character]
+success_symbol = "[❯](bright_purple)"
+error_symbol = "[❯](red)"
+
+[git_branch]
+format = "[$symbol$branch ]($style)"
+style = "bright_black"
+symbol = " "
+
+[git_status]
+disabled = true
+
+[lua]
+disabled = false
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[python]
+disabled = false
+format = '[${symbol}(${version} )$virtualenv]($style)'
+style = "yellow"
+symbol = "  "
+detect_extensions = []
+
+[rust]
+disabled = false
+format = '[$symbol($version )]($style)'
+symbol = "󱘗 "
+
+[cmd_duration]
+disabled = false
+format = "[$duration]($style) "
+style = "bright_purple"
+
+[package]
+disabled = true
+
+# Moonfly colorscheme
+[palettes.moonfly]
+bg = "#080808"
+fg = "#bdbdbd"
+black = "#323437"
+red = "#ff5d5d"
+green = "#8cc85f"
+yellow = "#e3c78a"
+blue = "#80a0ff"
+purple = "#cf87e8"
+cyan = "#79dac8"
+white = "#c6c6c6"
+bright_black = "#949494"
+bright_red = "#ff5189"
+bright_green = "#36c692"
+bright_yellow = "#c6c684"
+bright_blue = "#74b2ff"
+bright_purple = "#ae81ff"
+bright_cyan = "#85dc85"
+bright_white = "#e4e4e4"
