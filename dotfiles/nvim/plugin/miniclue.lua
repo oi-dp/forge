@@ -1,0 +1,52 @@
+vim.pack.add { 'https://github.com/nvim-mini/mini.clue' }
+
+local mini_clue = require 'mini.clue'
+mini_clue.setup {
+    clues = {
+        -- custom_clues,
+        mini_clue.gen_clues.builtin_completion(),
+        mini_clue.gen_clues.g(),
+        mini_clue.gen_clues.marks(),
+        mini_clue.gen_clues.registers(),
+        mini_clue.gen_clues.square_brackets(),
+        mini_clue.gen_clues.windows { submode_resize = true },
+    },
+    triggers = {
+        { mode = { 'n', 'x' }, keys = '<Leader>' },
+        { mode = { 'n', 'x' }, keys = '<localleader>' },
+        { mode = { 'n', 'x' }, keys = '[' },
+        { mode = { 'n', 'x' }, keys = ']' },
+        { mode = 'i', keys = '<C-x>' },
+        { mode = { 'n', 'x' }, keys = 'g' },
+        { mode = { 'n', 'x' }, keys = "'" },
+        { mode = { 'n', 'x' }, keys = '`' },
+        { mode = { 'n', 'x' }, keys = '"' },
+        { mode = { 'i', 'c' }, keys = '<C-r>' },
+        { mode = 'n', keys = '<C-w>' },
+        { mode = { 'n', 'x' }, keys = 's' },
+        { mode = { 'n', 'x' }, keys = 'z' },
+        { mode = { 'n', 'x' }, keys = '<Leader>ao', desc = '+OpenCode' },
+        { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
+        { mode = 'n', keys = '<Leader>bs', desc = '+Scratch' },
+        { mode = 'n', keys = '<Leader>e', desc = '+Explore' },
+        { mode = 'n', keys = '<Leader>g', desc = '+Git' },
+        { mode = 'n', keys = '<Leader>gb', desc = '+Blame' },
+        { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
+        { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
+        { mode = 'n', keys = '<Leader>t', desc = '+Testing' },
+        { mode = 'n', keys = '<Leader>tc', desc = '+Coverage' },
+        { mode = 'n', keys = '<Leader>o', desc = '+Other' },
+        { mode = 'n', keys = '<Leader>ox', desc = '+Quickfix' },
+    },
+    window = {
+        config = {
+            width = 70,
+            anchor = 'SE',
+            row = 'auto',
+            col = 'auto',
+        },
+        delay = 500,
+        scroll_up = '<C-k>',
+        scroll_down = '<C-j>',
+    },
+}

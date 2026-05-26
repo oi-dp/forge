@@ -53,9 +53,6 @@ keymap('n', '<A-k>', ':m .-2<CR>==')
 keymap('v', '<A-j>', ":m '>+1<CR>gv=gv")
 keymap('v', '<A-k>', ":m '<-2<CR>gv=gv")
 
--- netrw file explorer
-keymap('n', '<leader>ee', ':Explore<CR>', 'Open file explorer')
-
 keymap('n', '<leader>u', function()
     vim.cmd.packadd 'nvim.undotree'
     require('undotree').open()
