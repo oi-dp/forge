@@ -11,9 +11,11 @@ hl.config({
 })
 
 local funck = require('modules.funck')
+local cmd = hl.dsp.exec_cmd
+local window = hl.dsp.window
 
 local term = 'alacritty'
-local term2 = 'ghostty +new-window' -- enable systemd.service to use new-window
+local term2 = 'ghostty +new-window' -- enable ghostty systemd service to use new-window
 local files = 'foot yazi'
 local menu = 'hyprlauncher'
 local browser = 'zen-browser'
@@ -24,19 +26,19 @@ local alt = 'ALT + '
 local s_alt = 'ALT + SHIFT + '
 
 local binds = {
-    { mod .. 'RETURN', hl.dsp.exec_cmd(term) },
-    { mod .. 'T', hl.dsp.exec_cmd(term2) },
-    { mod .. 'SPACE', hl.dsp.exec_cmd(menu) },
-    { mod .. 'E', hl.dsp.exec_cmd(files) },
-    { mod .. 'F', hl.dsp.exec_cmd(browser) },
+    { mod .. 'RETURN', cmd(term) },
+    { mod .. 'T', cmd(term2) },
+    { mod .. 'SPACE', cmd(menu) },
+    { mod .. 'E', cmd(files) },
+    { mod .. 'F', cmd(browser) },
     { mod .. 'X', funck.floatfoot },
-    { s_mod .. 'W', hl.dsp.exec_cmd('pkill waybar; waybar') },
-    { s_mod .. 'R', hl.dsp.exec_cmd('hyprctl reload') },
-    { s_alt .. 'L', hl.dsp.exec_cmd('hyprlock') },
+    { s_mod .. 'W', cmd('pkill waybar; waybar') },
+    { s_mod .. 'R', cmd('hyprctl reload') },
+    { s_alt .. 'L', cmd('hyprlock') },
     { s_alt .. 'P', funck.cycles },
-    { alt .. 'Q', hl.dsp.window.close() },
-    { s_mod .. 'F', hl.dsp.window.float({ action = 'toggle' }) },
-    { mod .. 'TAB', hl.dsp.window.fullscreen({ action = 'toggle' }) },
+    { alt .. 'Q', window.close() },
+    { s_mod .. 'F', window.float({ action = 'toggle' }) },
+    { mod .. 'TAB', window.fullscreen({ action = 'toggle' }) },
     { 'Print', funck.capture },
 
     -- Move focus
@@ -47,37 +49,37 @@ local binds = {
 
     -- Scratchpad
     { mod .. 'S', hl.dsp.workspace.toggle_special('scratchpad') },
-    { s_mod .. 'S', hl.dsp.window.move({ workspace = 'special:scratchpad' }) },
+    { s_mod .. 'S', window.move({ workspace = 'special:scratchpad' }) },
 
     -- Move/resize windows with mouse
-    { mod .. 'mouse:272', hl.dsp.window.drag(), { mouse = true } },
-    { mod .. 'mouse:273', hl.dsp.window.resize(), { mouse = true } },
+    { mod .. 'mouse:272', window.drag(), { mouse = true } },
+    { mod .. 'mouse:273', window.resize(), { mouse = true } },
 
     -- Playerctl (locked only, no repeat)
-    { 'XF86AudioNext', hl.dsp.exec_cmd('playerctl next'), { locked = true } },
-    { 'XF86AudioPause', hl.dsp.exec_cmd('playerctl play-pause'), { locked = true } },
-    { 'XF86AudioPlay', hl.dsp.exec_cmd('playerctl play-pause'), { locked = true } },
-    { 'XF86AudioPrev', hl.dsp.exec_cmd('playerctl previous'), { locked = true } },
+    { 'XF86AudioNext', cmd('playerctl next'), { locked = true } },
+    { 'XF86AudioPause', cmd('playerctl play-pause'), { locked = true } },
+    { 'XF86AudioPlay', cmd('playerctl play-pause'), { locked = true } },
+    { 'XF86AudioPrev', cmd('playerctl previous'), { locked = true } },
 
     -- Multimedia keys (repeating + locked)
     {
         'XF86AudioRaiseVolume',
-        hl.dsp.exec_cmd('wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+'),
+        cmd('wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+'),
         { locked = true, repeating = true },
     },
     {
         'XF86AudioLowerVolume',
-        hl.dsp.exec_cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'),
+        cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'),
         { locked = true, repeating = true },
     },
     {
         'XF86AudioMute',
-        hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'),
+        cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'),
         { locked = true, repeating = true },
     },
     {
         'XF86AudioMicMute',
-        hl.dsp.exec_cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'),
+        cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'),
         { locked = true, repeating = true },
     },
 }
@@ -89,12 +91,12 @@ end
 for i = 1, 9 do
     local key = i % 9
     hl.bind(mod .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(s_mod .. key, hl.dsp.window.move({ workspace = i }))
+    hl.bind(s_mod .. key, window.move({ workspace = i }))
 end
 
 hl.bind(alt .. 'TAB', function()
-    hl.dispatch(hl.dsp.window.cycle_next())
-    hl.dispatch(hl.dsp.window.bring_to_top())
+    hl.dispatch(window.cycle_next())
+    hl.dispatch(window.bring_to_top())
 end)
 
 -- resize windows position
@@ -109,7 +111,7 @@ hl.define_submap('resize', function()
     }
 
     for _, d in ipairs(directions) do
-        hl.bind(d.key, hl.dsp.window.resize({ x = d.x, y = d.y, relative = true }), { repeating = true })
+        hl.bind(d.key, window.resize({ x = d.x, y = d.y, relative = true }), { repeating = true })
     end
 
     hl.bind('escape', hl.dsp.submap('reset'))
@@ -124,7 +126,7 @@ local move_window = {
 }
 
 for _, m in ipairs(move_window) do
-    hl.bind(s_alt .. m.key, hl.dsp.window.move({ direction = m.dir }))
+    hl.bind(s_alt .. m.key, window.move({ direction = m.dir }))
 end
 
 hl.on('config.reloaded', function()

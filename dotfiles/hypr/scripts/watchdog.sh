@@ -19,11 +19,6 @@ tmux set-hook -t "$SESSION" client-attached \
     && tmux send-keys -t $PANE1 btop Enter \
     && tmux send-keys -t $PANE2 surge Enter \
     && tmux set-hook -t $SESSION -u client-attached'"
-# sleep 0.8
-#
-# tmux send-keys -t "$PANE0" 'ducker' C-m
-# tmux send-keys -t "$PANE1" 'btop' C-m
-# tmux send-keys -t "$PANE2" 'surge' C-m
 
 tmux select-pane -t "$PANE1"
 tmux attach-session -t "$SESSION"
