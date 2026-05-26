@@ -1,18 +1,15 @@
 local function map_split(buf_id, lhs, direction)
     local minifiles = require 'mini.files'
-
     local function rhs()
         local window = minifiles.get_explorer_state().target_window
         if window == nil or minifiles.get_fs_entry().fs_type == 'directory' then
             return
         end
-
         local new_target_window
         vim.api.nvim_win_call(window, function()
             vim.cmd(direction .. 'split')
             new_target_window = vim.api.nvim_get_current_win()
         end)
-
         minifiles.set_target_window(new_target_window)
         minifiles.go_in { close_on_file = true }
     end
@@ -30,42 +27,42 @@ minifiles.setup {
     content = {
         sort = function(entries)
             local function compare_alphanumerically(e1, e2)
-                if e1.is_dir and not e2.is_dir then
-                    return true
+                if e1.is_dir ~= e2.is_dir then
+                    return e1.is_dir
                 end
-                if not e1.is_dir and e2.is_dir then
-                    return false
-                end
-                if e1.pre_digits == e2.pre_digits and e1.digits ~= nil and e2.digits ~= nil then
+                if
+                    e1.pre_digits ~= nil
+                    and e2.pre_digits ~= nil
+                    and e1.pre_digits == e2.pre_digits
+                    and e1.digits ~= e2.digits
+                then
                     return e1.digits < e2.digits
                 end
                 return e1.lower_name < e2.lower_name
             end
 
-            local sorted = vim.tbl_map(function(entry)
-                local pre_digits, digits = entry.name:match '^(%D*)(%d+)'
-                if digits ~= nil then
-                    digits = tonumber(digits)
-                end
-
-                return {
+            local augmented = {}
+            for i, entry in ipairs(entries) do
+                local pre, digits = entry.name:match '^(%D*)(%d+)'
+                augmented[i] = {
                     fs_type = entry.fs_type,
                     name = entry.name,
                     path = entry.path,
                     lower_name = entry.name:lower(),
                     is_dir = entry.fs_type == 'directory',
-                    pre_digits = pre_digits,
-                    digits = digits,
+                    pre_digits = pre,
+                    digits = digits and tonumber(digits),
                 }
-            end, entries)
-            table.sort(sorted, compare_alphanumerically)
-            return vim.tbl_map(function(x)
-                return { name = x.name, fs_type = x.fs_type, path = x.path }
-            end, sorted)
+            end
+            table.sort(augmented, compare_alphanumerically)
+            for i, x in ipairs(augmented) do
+                augmented[i] = { name = x.name, fs_type = x.fs_type, path = x.path }
+            end
+            return augmented
         end,
     },
     windows = { width_nofocus = 25 },
-    options = { permanent_delete = false },
+    options = { permanent_delete = true },
 }
 
 local minifiles_explorer_group = vim.api.nvim_create_augroup('minifiles_explorer', { clear = true })
@@ -92,11 +89,9 @@ vim.api.nvim_create_autocmd('User', {
         map_split(buf_id, '<C-w>v', 'belowright vertical')
     end,
 })
-vim.keymap.set('n', '<leader>e', function()
+keymap('n', '<leader>e', function()
     local bufname = vim.api.nvim_buf_get_name(0)
-    local path = vim.fn.fnamemodify(bufname, ':p')
-
-    if path and vim.uv.fs_stat(path) then
+    if bufname ~= '' and vim.uv.fs_stat(bufname) then
         require('mini.files').open(bufname, false)
     end
-end, { desc = 'File explorer' })
+end, 'File explorer')
