@@ -1,16 +1,16 @@
 vim.pack.add { 'https://github.com/bluz71/nvim-linefly' }
 
 vim.g.linefly_options = {
-    separator_symbol = '⎪',
-    progress_symbol = '↓ ',
+    separator_symbol = '',
+    progress_symbol = '↓  ',
     active_tab_symbol = '▪',
-    git_branch_symbol = '',
+    git_branch_symbol = '',
     error_symbol = ' ',
     warning_symbol = ' ',
     information_symbol = ' ',
     ellipsis_symbol = '…',
     exclude_patterns = {},
-    tabline = false,
+    tabline = true,
     winbar = false,
     with_file_icon = true,
     with_git_branch = true,

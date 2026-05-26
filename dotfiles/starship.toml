@@ -40,7 +40,7 @@ symbol = "󱘗 "
 
 [cmd_duration]
 disabled = false
-format = "[$duration]($style) "
+format = " [$duration]($style) "
 style = "bright_purple"
 
 [package]
