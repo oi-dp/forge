@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'moonfly',
     group = group,
     callback = function()
-        vim.api.nvim_set_hl(0, 'Function', { fg = '#74b2ff', bold = true })
+        vim.api.nvim_set_hl(0, 'Function', { fg = '#74b2ff', bold = false })
     end,
 })
 

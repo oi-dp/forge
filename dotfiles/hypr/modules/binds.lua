@@ -55,33 +55,11 @@ local binds = {
     { mod .. 'mouse:272', window.drag(), { mouse = true } },
     { mod .. 'mouse:273', window.resize(), { mouse = true } },
 
-    -- Playerctl (locked only, no repeat)
-    { 'XF86AudioNext', cmd('playerctl next'), { locked = true } },
-    { 'XF86AudioPause', cmd('playerctl play-pause'), { locked = true } },
-    { 'XF86AudioPlay', cmd('playerctl play-pause'), { locked = true } },
-    { 'XF86AudioPrev', cmd('playerctl previous'), { locked = true } },
-
-    -- Multimedia keys (repeating + locked)
-    {
-        'XF86AudioRaiseVolume',
-        cmd('wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+'),
-        { locked = true, repeating = true },
-    },
-    {
-        'XF86AudioLowerVolume',
-        cmd('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'),
-        { locked = true, repeating = true },
-    },
-    {
-        'XF86AudioMute',
-        cmd('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'),
-        { locked = true, repeating = true },
-    },
-    {
-        'XF86AudioMicMute',
-        cmd('wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'),
-        { locked = true, repeating = true },
-    },
+    -- Playerctl
+    { 'XF86AudioNext', cmd('playerctl next'), { locked = false } },
+    { 'XF86AudioPause', cmd('playerctl play-pause'), { locked = false } },
+    { 'XF86AudioPlay', cmd('playerctl play-pause'), { locked = false } },
+    { 'XF86AudioPrev', cmd('playerctl previous'), { locked = false } },
 }
 
 for _, bind in ipairs(binds) do
