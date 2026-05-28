@@ -88,17 +88,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
         lsp_map('n', '<leader>ca', vim.lsp.buf.code_action, 'Execute Code Action')
     end,
 })
-
--- lazy-load harper only when entering specific filetypes
--- vim.api.nvim_create_autocmd('FileType', {
---     group = vim.api.nvim_create_augroup('harper_lazy_load', { clear = true }),
---     -- stylua: ignore start
---     pattern = {
---         'go', 'html', 'java', 'javascript', 'lua', 'markdown',
---         'python', 'rust', 'toml', 'typescript', 'cmake', 'sh'
---     },
---     -- stylua: ignore end
---     callback = function()
---         vim.lsp.enable 'harper'
---     end,
--- })

@@ -2,7 +2,7 @@ vim.pack.add { 'https://github.com/bluz71/nvim-linefly' }
 
 vim.g.linefly_options = {
     separator_symbol = '',
-    progress_symbol = '↓  ',
+    progress_symbol = '↓ ',
     active_tab_symbol = '▪',
     git_branch_symbol = '',
     error_symbol = ' ',
