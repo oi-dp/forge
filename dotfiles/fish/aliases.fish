@@ -23,8 +23,8 @@ abbr gc 'git commit'
 abbr --set-cursor='%' gcm git\ commit\ -m\ \'\%\'
 abbr push 'git push'
 abbr pull 'git pull'
-abbr gestat 'git status'
-abbr gitlog 'git log --oneline --graph --decorate'
+abbr gst 'git status'
+abbr glog 'git log --oneline --graph --decorate'
 abbr gco 'git checkout'
 
 # tmux

@@ -6,9 +6,6 @@ fish_add_path $HOME/.local/bin
 set -gx BAT_CONFIG_DIR $HOME/.config/bat
 set -gx BAT_CONFIG_PATH $HOME/.config/bat/config
 
-# custom functions
-set -p fish_function_path $HOME/.config/fish/functions/dailies
-
 # terminals
 set -gx TERMCMD foot
 
