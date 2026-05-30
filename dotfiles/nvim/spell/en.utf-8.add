@@ -29,3 +29,10 @@ checkhealth
 rhs
 lhs
 systemd
+usr
+env
+hyprpaper
+ghostty
+boolean
+Neovim
+integer
