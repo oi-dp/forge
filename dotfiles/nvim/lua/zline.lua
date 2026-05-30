@@ -8,6 +8,7 @@ local function zline_hls()
     local c = moonfly.palette
 
     local hls = {
+        { 'StatusLine', { fg = c.fg, bg = c.grey11 } },
         { 'StatusLineNC', { fg = c.grey236, bg = c.bg0 } },
         { 'Sep', { fg = c.grey236, bg = c.bg0 } },
         -- Modes
@@ -17,15 +18,16 @@ local function zline_hls()
         { 'Comm', { fg = c.yellow, bold = true } },
         { 'Rplc', { fg = c.crimson, bold = true } },
         -- Git
-        { 'GBranch', { fg = c.blue, bg = c.bg0 } },
+        { 'GBranch', { fg = c.coral, bg = c.bg0 } },
         { 'GAdd', { fg = c.emerald, bg = c.bg0 } },
         { 'GChange', { fg = c.yellow, bg = c.bg0 } },
         { 'GDel', { fg = c.crimson, bg = c.bg0 } },
         -- Diagnostics
         { 'DiagErr', { fg = c.crimson, bg = c.bg0 } },
         { 'DiagWarn', { fg = c.yellow, bg = c.bg0 } },
+        { 'DiagInfo', { fg = c.blue, bg = c.bg0 } },
         -- LSP
-        { 'Lsp', { fg = c.emerald, bg = c.bg0, bold = true } },
+        { 'Lsp', { fg = c.grey236, bg = c.bg0 } },
     }
 
     for _, hl in ipairs(hls) do
@@ -94,19 +96,22 @@ local function get_git()
 end
 
 local function get_diagnostics()
-    local err_count, warn_count = 0, 0
+    local err_count, warn_count, info_count = 0, 0, 0
     local sev = vim.diagnostic.severity
     for _, d in ipairs(vim.diagnostic.get(0)) do
         if d.severity == sev.ERROR then
             err_count = err_count + 1
         elseif d.severity == sev.WARN then
             warn_count = warn_count + 1
+        elseif d.severity == sev.INFO then
+            info_count = info_count + 1
         end
     end
 
     local err_str = err_count > 0 and string.format('%%#DiagErr#✖ %s ', err_count) or ''
     local warn_str = warn_count > 0 and string.format('%%#DiagWarn#⚠ %s ', warn_count) or ''
-    return err_str .. warn_str
+    local info_str = info_count > 0 and string.format('%%#DiagInfo# %s ', info_count) or ''
+    return err_str .. warn_str .. info_str
 end
 
 -- LSP
@@ -152,7 +157,26 @@ local function get_active_lsp()
     return _lsp_cache[bufnr]
 end
 
--- Render statusline
+local function nu_tabline()
+    local symbol = '▪'
+    local tabline = ''
+    for i = 1, vim.fn.tabpagenr '$', 1 do
+        tabline = tabline .. '%' .. i .. 'T'
+        if vim.fn.tabpagenr() == i then
+            tabline = tabline .. '%#TablineSelSymbol#' .. symbol .. '%#TablineSel# Tab:'
+        else
+            tabline = tabline .. '%#Tabline# Tab:'
+        end
+        tabline = tabline .. i .. '%T %#TablineFill#'
+    end
+    return tabline
+end
+
+-- Render statusline and tabline
+function _G.ZTabline()
+    return nu_tabline()
+end
+
 function _G.ZLine()
     local sep = '%#Sep# '
     local mode = get_mode()
@@ -164,7 +188,7 @@ function _G.ZLine()
     local progress = '%#StatusLine#%L ↓%p%% '
 
     local active_left = {}
-    for _, comp in ipairs { mode, file, git, lsp } do
+    for _, comp in ipairs { mode, file, lsp, git } do
         if comp ~= '' then
             table.insert(active_left, comp)
         end
@@ -174,3 +198,4 @@ function _G.ZLine()
 end
 
 vim.opt.statusline = '%!v:lua.ZLine()'
+vim.opt.tabline = '%!v:lua.ZTabline()'
