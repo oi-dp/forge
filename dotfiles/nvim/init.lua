@@ -9,3 +9,5 @@ require 'commands'
 require 'autocmds'
 require 'lsp'
 require 'zline'
+
+vim.cmd.colorscheme 'techbase'
