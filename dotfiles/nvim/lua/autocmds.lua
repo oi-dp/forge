@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+    group = augroup 'netrw',
     pattern = 'netrw',
     callback = function()
         local sess_options = {
