@@ -36,3 +36,15 @@ ghostty
 boolean
 Neovim
 integer
+statusline
+tabline
+struct
+techbase
+Filetype
+Gitcommit
+Treesitter
+LaTeX
+GitSigns
+whitespace
+hl
+StatusLine

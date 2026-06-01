@@ -44,6 +44,7 @@ opt.smartindent = true
 
 -- UI
 opt.cursorline = true
+opt.cursorlineopt = 'number'
 opt.termguicolors = true
 opt.signcolumn = 'yes'
 -- opt.colorcolumn = '+1'
