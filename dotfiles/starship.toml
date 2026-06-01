@@ -3,14 +3,15 @@
 add_newline = true
 command_timeout = 5000
 
-palette = "moonfly"
+palette = "techbase"
 
 [directory]
+style = "bright_white"
 truncation_length = 5
 read_only = " 󰌾"
 
 [character]
-success_symbol = "[❯](bright_purple)"
+success_symbol = "[❯](bright_blue)"
 error_symbol = "[❯](red)"
 
 [git_branch]
@@ -46,23 +47,22 @@ style = "bright_purple"
 [package]
 disabled = true
 
-# Moonfly colorscheme
-[palettes.moonfly]
+[palettes.techbase]
 bg = "#080808"
-fg = "#bdbdbd"
-black = "#323437"
-red = "#ff5d5d"
-green = "#8cc85f"
-yellow = "#e3c78a"
-blue = "#80a0ff"
-purple = "#cf87e8"
-cyan = "#79dac8"
-white = "#c6c6c6"
-bright_black = "#949494"
-bright_red = "#ff5189"
-bright_green = "#36c692"
-bright_yellow = "#c6c684"
-bright_blue = "#74b2ff"
-bright_purple = "#ae81ff"
-bright_cyan = "#85dc85"
-bright_white = "#e4e4e4"
+fg = "#D6DDEA"
+black = "#191d23"
+red = "#942B27"
+green = "#366A4C"
+yellow = "#E9B872"
+blue = "#3F58BB"
+purple = "#BCB6EC"
+cyan = "#1A8C9B"
+white = "#CCD5E5"
+bright_black = "#474B65"
+bright_red = "#ff5454"
+bright_green = "#0EC256"
+bright_yellow = "#FFA630"
+bright_blue = "#6A8BE3"
+bright_purple = "#FFC0C5"
+bright_cyan = "#74BAA8"
+bright_white = "#B7C4FF"

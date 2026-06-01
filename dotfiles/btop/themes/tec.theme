@@ -2,16 +2,16 @@
 theme[main_bg]="#080808"[cite: 2]
 
 # Main text color
-theme[main_fg]="#b2b2b2"[cite: 2]
+theme[main_fg]="#ccd5e5"[cite: 2]
 
 # Title color for boxes
-theme[title]="#b2b2b2"[cite: 2]
+theme[title]="#ccd5e5"[cite: 2]
 
 # Highlight color for keyboard shortcuts
 theme[hi_fg]="#80a0ff"[cite: 2]
 
 # Background color of selected item in processes box
-theme[selected_bg]="#323232"[cite: 2]
+theme[selected_bg]="#363848"[cite: 2]
 
 # Foreground color of selected item in processes box
 theme[selected_fg]="#80a0ff"[cite: 2]
@@ -23,19 +23,19 @@ theme[inactive_fg]="#949494"[cite: 2]
 theme[graph_text]="#74b2ff"[cite: 2]
 
 # Background color of the percentage meters
-theme[meter_bg]="#323232"[cite: 2]
+theme[meter_bg]="#1f242d"[cite: 2]
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#ae81ff"[cite: 2]
+theme[proc_misc]="#7e8193"[cite: 2]
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#ae81ff"[cite: 2]
-theme[mem_box]="#8cc85f"[cite: 2]
-theme[net_box]="#ff5189"[cite: 2]
-theme[proc_box]="#80a0ff"[cite: 2]
+theme[cpu_box]="#b7c4ff"[cite: 2]
+theme[mem_box]="#b7c4ff"[cite: 2]
+theme[net_box]="#b7c4ff"[cite: 2]
+theme[proc_box]="#b7c4ff"[cite: 2]
 
 # Box divider line and small boxes line color
-theme[div_line]="#323232"[cite: 2]
+theme[div_line]="#1f242d"[cite: 2]
 
 # Temperature graph color (Green -> Yellow -> Red)
 theme[temp_start]="#8cc85f"[cite: 2]
