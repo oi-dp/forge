@@ -312,6 +312,12 @@ hl['LspReferenceTarget'] = { link = 'Substitute' }
 
 -- ── Plugins ───────────────────────────────────────────────────────────────────
 
+-- Treesitter context
+hl['TreesitterContext'] = { bg = c.float_bg }
+hl['TreesitterContextBottom'] = { underline = true, sp = c.float_border_fg }
+hl['TreesitterContextLineNumber'] = { fg = c.nontext_fg, bg = c.float_bg }
+hl['TreesitterContextLineNumberBottom'] = { underline = true, sp = c.float_border_fg }
+
 -- Blink
 hl['BlinkCmpDoc'] = { link = 'Pmenu' }
 hl['BlinkCmpDocBorder'] = { fg = c.float_bg_border, bg = c.float_bg }
