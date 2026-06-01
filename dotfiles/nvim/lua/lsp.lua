@@ -19,7 +19,7 @@ vim.fn.sign_define('DapBreakpoint', {
     numhl = '',
 })
 
-local sev = vim.diagnostic.severity
+-- local sev = vim.diagnostic.severity
 
 vim.diagnostic.config {
     underline = true,
@@ -31,14 +31,16 @@ vim.diagnostic.config {
         max_width = 80,
         source = true,
     },
-    signs = {
-        text = {
-            [sev.ERROR] = ' ',
-            [sev.WARN] = ' ',
-            [sev.INFO] = ' ',
-            [sev.HINT] = ' ',
-        },
-    },
+    signs = false,
+    -- too noisy with tiny-inline plugin enabled
+    -- signs = {
+    --     text = {
+    --         [sev.ERROR] = ' ',
+    --         [sev.WARN] = ' ',
+    --         [sev.INFO] = ' ',
+    --         [sev.HINT] = ' ',
+    --     },
+    -- },
 }
 
 -- Navigation helpers
